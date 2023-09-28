@@ -1,4 +1,6 @@
-﻿namespace Todo.TorneSeUmProgramador.App
+﻿using Todo.TorneSeUmProgramador.App.Views;
+
+namespace Todo.TorneSeUmProgramador.App
 {
     public partial class App : Application
     {
@@ -6,7 +8,7 @@
         {
             InitializeComponent();
 
-            MainPage = new AppShell();
+            MainPage = new PaginaInicial();
         }
     }
 }
