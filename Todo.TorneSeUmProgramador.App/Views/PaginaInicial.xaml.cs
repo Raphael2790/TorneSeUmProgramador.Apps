@@ -12,11 +12,13 @@ public partial class PaginaInicial : ContentPage
 			{
 				Nome = "Tarefa 1",
 				Descricao = "Descrição da tarefa 1",
+				Concluida = false
 			},
 			new
 			{
 				Nome = "Tarefa 2",
 				Descricao = "Descrição da tarefa 2",
+				Concluida = true
 			},
 		};
 	}

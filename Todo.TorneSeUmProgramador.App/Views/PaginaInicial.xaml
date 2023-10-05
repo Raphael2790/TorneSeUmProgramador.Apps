@@ -4,6 +4,14 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="PaginaInicial">
+    <ContentPage.Resources>
+        <Style x:Key="DangerButton" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="Red" />
+        </Style>
+        <Style Class="PrimaryButton" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="Blue" />
+        </Style>
+    </ContentPage.Resources>
     <Grid Padding="10" RowDefinitions="70,*">
         <Entry
             x:Name="pesquisaEntry"
@@ -17,20 +25,22 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <VerticalStackLayout Padding="10">
-                        <Label Text="{Binding Nome}" />
-                        <Label Text="{Binding Descricao}" />
+                        <HorizontalStackLayout>
+                            <CheckBox IsChecked="{Binding Concluida}" />
+                            <StackLayout>
+                                <Label Text="{Binding Nome}" />
+                                <Label Text="{Binding Descricao}" />
+                            </StackLayout>
+                        </HorizontalStackLayout>
                     </VerticalStackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
         <Button
             Grid.Row="1"
-            BackgroundColor="Green"
             Clicked="AdiconarTarefa_ButtonClicked"
-            CornerRadius="10"
             HorizontalOptions="Center"
             Text="+ Adicionar Tarefa"
-            TextColor="White"
             VerticalOptions="End" />
     </Grid>
 </ContentPage>
