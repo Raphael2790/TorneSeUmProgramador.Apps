@@ -5,19 +5,23 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="PaginaInicial">
     <ContentPage.Resources>
-        <Style x:Key="DangerButton" TargetType="Button">
-            <Setter Property="BackgroundColor" Value="Red" />
+        <Style x:Key="StyleButton" TargetType="Button">
+            <Setter Property="FontFamily" Value="OswaldBold" />
+            <Setter Property="BackgroundColor" Value="{OnPlatform Android='Green', Default='DodgerBlue', WinUI='Purple'}" />
         </Style>
         <Style Class="PrimaryButton" TargetType="Button">
-            <Setter Property="BackgroundColor" Value="Blue" />
+            <Setter Property="BackgroundColor" Value="{StaticResource Gray900}" />
         </Style>
     </ContentPage.Resources>
     <Grid Padding="10" RowDefinitions="70,*">
-        <Entry
-            x:Name="pesquisaEntry"
-            Keyboard="Email"
-            Placeholder="Pesquisar tarefa ..."
-            TextChanged="PesquisaEntry_TextChanged" />
+        <StackLayout>
+            <Entry
+                x:Name="pesquisaEntry"
+                Keyboard="Email"
+                Placeholder="Pesquisar tarefa ..."
+                TextChanged="PesquisaEntry_TextChanged" />
+            <Label Text="{Binding Source={x:Reference pesquisaEntry}, Path=Text}" />
+        </StackLayout>
         <CollectionView
             x:Name="TarefasCollectionView"
             Grid.Row="1"
@@ -28,8 +32,8 @@
                         <HorizontalStackLayout>
                             <CheckBox IsChecked="{Binding Concluida}" />
                             <StackLayout>
-                                <Label Text="{Binding Nome}" />
-                                <Label Text="{Binding Descricao}" />
+                                <Label FontFamily="OswaldBold" Text="{Binding Nome}" />
+                                <Label FontFamily="OswaldLight" Text="{Binding Descricao}" />
                             </StackLayout>
                         </HorizontalStackLayout>
                     </VerticalStackLayout>
@@ -40,6 +44,7 @@
             Grid.Row="1"
             Clicked="AdiconarTarefa_ButtonClicked"
             HorizontalOptions="Center"
+            Style="{StaticResource StyleButton}"
             Text="+ Adicionar Tarefa"
             VerticalOptions="End" />
     </Grid>

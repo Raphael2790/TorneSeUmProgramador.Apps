@@ -28,8 +28,29 @@ public partial class PaginaInicial : ContentPage
 
     }
 
-    private void AdiconarTarefa_ButtonClicked(object sender, EventArgs e)
+    private async void AdiconarTarefa_ButtonClicked(object sender, EventArgs e)
     {
+		await Navigation.PushModalAsync(new AdicionarEditarTarefa());
+	}
 
+    #region Exemplos de código
+    private void ExemplosCompilaçãoCondicional()
+	{
+#if ANDROID
+        DisplayAlert("Android", "Adicionar tarefa", "OK");
+#endif
+
+#if WINDOWS
+        DisplayAlert("Windows", "Adicionar tarefa", "OK");
+#endif
     }
+
+    //  protected override void OnSizeAllocated(double width, double height)
+    //  {
+    //pesquisaEntry.WidthRequest = width - 100;
+    //pesquisaEntry.HorizontalOptions = LayoutOptions.Center;
+
+    //      base.OnSizeAllocated(width, height);
+    //  }
+    #endregion
 }

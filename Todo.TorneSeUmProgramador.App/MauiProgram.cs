@@ -13,6 +13,10 @@ namespace Todo.TorneSeUmProgramador.App
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                    fonts.AddFont("Oswald-Regular.ttf", "OswaldRegular");
+                    fonts.AddFont("Oswald-Bold.ttf", "OswaldBold");
+                    fonts.AddFont("Oswald-ExtraLight.ttf", "OswaldExtraLight");
+                    fonts.AddFont("Oswald-Light.ttf", "OswaldLight");
                 });
 
 #if DEBUG

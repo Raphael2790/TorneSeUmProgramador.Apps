@@ -8,7 +8,7 @@ namespace Todo.TorneSeUmProgramador.App
         {
             InitializeComponent();
 
-            MainPage = new AdicionarEditarTarefa();
+            MainPage = new PaginaInicial();
         }
     }
 }
