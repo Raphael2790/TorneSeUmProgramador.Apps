@@ -3,6 +3,7 @@
     x:Class="Todo.TorneSeUmProgramador.App.Views.PaginaInicial"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:Todo.TorneSeUmProgramador.App.Converters"
     Title="PaginaInicial">
     <ContentPage.Resources>
         <Style x:Key="StyleButton" TargetType="Button">
@@ -12,9 +13,14 @@
         <Style Class="PrimaryButton" TargetType="Button">
             <Setter Property="BackgroundColor" Value="{StaticResource Gray900}" />
         </Style>
+        <converters:DataConclusaoConverter x:Key="DataConclusaoConverter" />
     </ContentPage.Resources>
-    <Grid Padding="10" RowDefinitions="70,*">
-        <StackLayout>
+    <Grid Padding="10" RowDefinitions="Auto,70,*">
+        <Switch
+            OnColor="Green"
+            ThumbColor="FloralWhite"
+            Toggled="SwitchTheme_Toggled" />
+        <StackLayout Grid.Row="1">
             <Entry
                 x:Name="pesquisaEntry"
                 Keyboard="Email"
@@ -24,7 +30,7 @@
         </StackLayout>
         <CollectionView
             x:Name="TarefasCollectionView"
-            Grid.Row="1"
+            Grid.Row="2"
             EmptyView="Não existem tarefas cadastradas">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
@@ -34,6 +40,7 @@
                             <StackLayout>
                                 <Label FontFamily="OswaldBold" Text="{Binding Nome}" />
                                 <Label FontFamily="OswaldLight" Text="{Binding Descricao}" />
+                                <Label FontFamily="OswaldLight" Text="{Binding DataConclusao, Converter={StaticResource DataConclusaoConverter}}" />
                             </StackLayout>
                         </HorizontalStackLayout>
                     </VerticalStackLayout>
@@ -41,7 +48,7 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
         <Button
-            Grid.Row="1"
+            Grid.Row="2"
             Clicked="AdiconarTarefa_ButtonClicked"
             HorizontalOptions="Center"
             Style="{StaticResource StyleButton}"

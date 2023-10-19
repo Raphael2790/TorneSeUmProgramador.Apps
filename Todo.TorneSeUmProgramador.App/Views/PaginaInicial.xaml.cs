@@ -1,26 +1,19 @@
+using Todo.TorneSeUmProgramador.Data.DAO;
+
 namespace Todo.TorneSeUmProgramador.App.Views;
 
 public partial class PaginaInicial : ContentPage
 {
+	private bool _isDarkTheme = true;
+    private readonly TarefasDAO _tarefasDAO;
+
 	public PaginaInicial()
 	{
 		InitializeComponent();
 
-		TarefasCollectionView.ItemsSource = new List<object>
-		{
-			new
-			{
-				Nome = "Tarefa 1",
-				Descricao = "Descrição da tarefa 1",
-				Concluida = false
-			},
-			new
-			{
-				Nome = "Tarefa 2",
-				Descricao = "Descrição da tarefa 2",
-				Concluida = true
-			},
-		};
+        _tarefasDAO = new TarefasDAO();
+
+        TarefasCollectionView.ItemsSource = _tarefasDAO.Listar();
 	}
 
     private void PesquisaEntry_TextChanged(object sender, TextChangedEventArgs e)
@@ -30,7 +23,7 @@ public partial class PaginaInicial : ContentPage
 
     private async void AdiconarTarefa_ButtonClicked(object sender, EventArgs e)
     {
-		await Navigation.PushModalAsync(new AdicionarEditarTarefa());
+		await Navigation.PushModalAsync(new AdicionarEditarTarefa(_tarefasDAO));
 	}
 
     #region Exemplos de código
@@ -53,4 +46,18 @@ public partial class PaginaInicial : ContentPage
     //      base.OnSizeAllocated(width, height);
     //  }
     #endregion
+
+    private void SwitchTheme_Toggled(object sender, ToggledEventArgs e)
+    {
+		if (_isDarkTheme)
+		{
+			App.Current.UserAppTheme = AppTheme.Light;
+			_isDarkTheme = !_isDarkTheme;
+		}
+		else
+		{
+		    App.Current.UserAppTheme = AppTheme.Dark;
+			_isDarkTheme = !_isDarkTheme;
+		}
+    }
 }
