@@ -14,22 +14,23 @@
         </Style>
     </ContentPage.Resources>
     <FlexLayout
-        Margin="10"
+        Margin="20"
         Direction="Column"
         JustifyContent="SpaceBetween">
-        <Grid>
+        <StackLayout Orientation="Horizontal">
             <Label
                 HorizontalOptions="Center"
                 Style="{StaticResource LblTitle}"
                 Text="Adicionar / Editar Tarefa"
-                VerticalOptions="Center" />
+                VerticalOptions="Center"
+                WidthRequest="280" />
             <Button
                 Clicked="BtnFechar_Clicked"
-                HorizontalOptions="End"
+                HorizontalOptions="Center"
                 Style="{StaticResource BtnFechar}"
                 Text="X"
                 VerticalOptions="Center" />
-        </Grid>
+        </StackLayout>
         <StackLayout>
             <Label Text="Nome tarefa" />
             <Border StrokeShape="RoundRectangle 10">

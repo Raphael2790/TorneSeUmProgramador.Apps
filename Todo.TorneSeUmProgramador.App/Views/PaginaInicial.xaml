@@ -15,18 +15,16 @@
         </Style>
         <converters:DataConclusaoConverter x:Key="DataConclusaoConverter" />
     </ContentPage.Resources>
-    <Grid Padding="10" RowDefinitions="Auto,70,*">
+    <Grid Padding="20" RowDefinitions="Auto,70,*">
         <Switch
             OnColor="Green"
             ThumbColor="FloralWhite"
             Toggled="SwitchTheme_Toggled" />
         <StackLayout Grid.Row="1">
             <Entry
-                x:Name="pesquisaEntry"
                 Keyboard="Email"
                 Placeholder="Pesquisar tarefa ..."
                 TextChanged="PesquisaEntry_TextChanged" />
-            <Label Text="{Binding Source={x:Reference pesquisaEntry}, Path=Text}" />
         </StackLayout>
         <CollectionView
             x:Name="TarefasCollectionView"
@@ -35,6 +33,9 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <VerticalStackLayout Padding="10">
+                        <VerticalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer CommandParameter="{Binding .}" Tapped="AoTocarTarefaIrParaEditar" />
+                        </VerticalStackLayout.GestureRecognizers>
                         <HorizontalStackLayout>
                             <CheckBox IsChecked="{Binding Concluida}" />
                             <StackLayout>
@@ -51,7 +52,6 @@
             Grid.Row="2"
             Clicked="AdiconarTarefa_ButtonClicked"
             HorizontalOptions="Center"
-            Style="{StaticResource StyleButton}"
             Text="+ Adicionar Tarefa"
             VerticalOptions="End" />
     </Grid>
