@@ -53,6 +53,7 @@
 	  <None Remove="Resources\Fonts\Oswald-ExtraLight.ttf" />
 	  <None Remove="Resources\Fonts\Oswald-Light.ttf" />
 	  <None Remove="Resources\Fonts\Oswald-Regular.ttf" />
+	  <None Remove="Resources\Images\trash.svg" />
 	</ItemGroup>
 
 	<ItemGroup>

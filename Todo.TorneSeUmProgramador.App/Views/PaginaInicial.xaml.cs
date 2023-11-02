@@ -1,6 +1,7 @@
 using CommunityToolkit.Mvvm.Messaging;
 using System.Collections.ObjectModel;
 using Todo.TorneSeUmProgramador.App.Messages;
+using Todo.TorneSeUmProgramador.App.Storages;
 using Todo.TorneSeUmProgramador.Core.Modelos;
 using Todo.TorneSeUmProgramador.Data.DAO;
 
@@ -16,7 +17,14 @@ public partial class PaginaInicial : ContentPage
 	{
 		InitializeComponent();
 
+        var tarefasSalvas = TarefaPreferencesStorage.Listar();
+
         _tarefasDAO = new TarefasDAO();
+
+        if (tarefasSalvas.Any())
+        {
+            _tarefasDAO.Adicionar(tarefasSalvas);
+        }
 
         _tarefas = new ObservableCollection<Tarefa>(_tarefasDAO.Listar());
 
@@ -25,6 +33,7 @@ public partial class PaginaInicial : ContentPage
         WeakReferenceMessenger.Default.Register<NovaTarefaMessage>(this, (x, y) =>
         {
             _tarefas.Add(y.Value);
+            TarefaPreferencesStorage.Salvar(y.Value);
         });
 
         WeakReferenceMessenger.Default.Register<EditarTarefaMessage>(this, (x, y) =>
@@ -39,6 +48,8 @@ public partial class PaginaInicial : ContentPage
             TarefasCollectionView.ItemsSource = null;
 
             TarefasCollectionView.ItemsSource = _tarefas;
+
+            TarefaPreferencesStorage.Atualizar(y.Value);
         });
 	}
 
@@ -107,5 +118,14 @@ public partial class PaginaInicial : ContentPage
         var modal = new AdicionarEditarTarefa(tarefa);
 
         await Navigation.PushModalAsync(modal);
+    }
+
+    private void DeletarTarefaSwipeInvoke(object sender, EventArgs e)
+    {
+        var swipeItem = (SwipeItem)sender;
+        var tarefa = (Tarefa)swipeItem.CommandParameter;
+
+        _tarefas.Remove(tarefa);
+        TarefaPreferencesStorage.Excluir(tarefa);
     }
 }

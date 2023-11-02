@@ -32,19 +32,38 @@
             EmptyView="Não existem tarefas cadastradas">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <VerticalStackLayout Padding="10">
-                        <VerticalStackLayout.GestureRecognizers>
-                            <TapGestureRecognizer CommandParameter="{Binding .}" Tapped="AoTocarTarefaIrParaEditar" />
-                        </VerticalStackLayout.GestureRecognizers>
-                        <HorizontalStackLayout>
-                            <CheckBox IsChecked="{Binding Concluida}" />
-                            <StackLayout>
-                                <Label FontFamily="OswaldBold" Text="{Binding Nome}" />
-                                <Label FontFamily="OswaldLight" Text="{Binding Descricao}" />
-                                <Label FontFamily="OswaldLight" Text="{Binding DataConclusao, Converter={StaticResource DataConclusaoConverter}}" />
-                            </StackLayout>
-                        </HorizontalStackLayout>
-                    </VerticalStackLayout>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem
+                                    BackgroundColor="Red"
+                                    CommandParameter="{Binding .}"
+                                    IconImageSource="trash.png"
+                                    Invoked="DeletarTarefaSwipeInvoke" />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <Border
+                            Margin="0,10"
+                            BackgroundColor="Transparent"
+                            Stroke="{AppThemeBinding Dark=White,
+                                                     Light=Black}"
+                            StrokeShape="RoundRectangle 10"
+                            StrokeThickness="1">
+                            <VerticalStackLayout Padding="10">
+                                <VerticalStackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer CommandParameter="{Binding .}" Tapped="AoTocarTarefaIrParaEditar" />
+                                </VerticalStackLayout.GestureRecognizers>
+                                <HorizontalStackLayout>
+                                    <CheckBox IsChecked="{Binding Concluida}" />
+                                    <StackLayout>
+                                        <Label FontFamily="OswaldBold" Text="{Binding Nome}" />
+                                        <Label FontFamily="OswaldLight" Text="{Binding Descricao}" />
+                                        <Label FontFamily="OswaldLight" Text="{Binding DataConclusao, Converter={StaticResource DataConclusaoConverter}}" />
+                                    </StackLayout>
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                        </Border>
+                    </SwipeView>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
