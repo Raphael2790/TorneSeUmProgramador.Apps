@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Todo.TorneSeUmProgramador.App.Views.Login"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Login">
+    <VerticalStackLayout
+        Padding="10"
+        HorizontalOptions="Center"
+        VerticalOptions="Center">
+        <VerticalStackLayout Spacing="20">
+            <Image
+                HeightRequest="100"
+                HorizontalOptions="Center"
+                Source="checklist.png"
+                VerticalOptions="Center"
+                WidthRequest="100" />
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                HorizontalOptions="Center"
+                Text="Aplicativo Tarefas - Torne Se Um Programador "
+                VerticalOptions="Center" />
+        </VerticalStackLayout>
+
+        <Entry
+            x:Name="EmailEntry"
+            Margin="0,20,0,0"
+            Placeholder="Digite seu email.." />
+        <Entry
+            x:Name="SenhaEntry"
+            Margin="0,20,0,0"
+            IsPassword="True"
+            Placeholder="Digite sua senha..." />
+
+        <Button
+            Margin="0,20,0,0"
+            Clicked="BtnLogin_Clicked"
+            Text="Login" />
+    </VerticalStackLayout>
+</ContentPage>

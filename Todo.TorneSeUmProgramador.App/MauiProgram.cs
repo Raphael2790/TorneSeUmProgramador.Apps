@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Todo.TorneSeUmProgramador.Core.Modelos;
 using Todo.TorneSeUmProgramador.Data.DAO;
 
 namespace Todo.TorneSeUmProgramador.App
@@ -28,7 +29,28 @@ namespace Todo.TorneSeUmProgramador.App
 
             dao.CriarBancoDeDados();
 
+            SeedDatabase();
+
             return builder.Build();
+        }
+
+        private static void SeedDatabase()
+        {
+            var dao = new UsuarioDAO();
+
+            var usuario = dao.Obter().Result;
+
+            if(usuario is not null)
+                return;
+
+            var usuarioPadrao = new Usuario
+            {
+                Nome = "user",
+                Email = "user@user.com",
+                Senha = "user"
+            };
+
+            dao.Adicionar(usuarioPadrao).Wait();
         }
     }
 }
