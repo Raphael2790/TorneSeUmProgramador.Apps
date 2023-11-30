@@ -42,7 +42,7 @@ public class TarefasDAO
 
     public void CriarBancoDeDados()
     {
-        _contexto.Database.EnsureDeleted();
+        //_contexto.Database.EnsureDeleted();
         _contexto.Database.EnsureCreated();
     }
 
