@@ -4,18 +4,43 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:Viagens.TorneSeUmProgramador.App.Views"
-    Shell.FlyoutBehavior="Disabled">
+    Shell.FlyoutBehavior="Disabled"
+    Shell.NavBarIsVisible="False">
 
     <TabBar>
         <ShellContent
-            Title="Login"
-            ContentTemplate="{DataTemplate views:Login}"
-            Route="login" />
-
-        <ShellContent
             Title="Home"
             ContentTemplate="{DataTemplate views:PaginaInicial}"
+            Icon="search.png"
             Route="home" />
+
+        <ShellContent
+            Title="Ofertas"
+            ContentTemplate="{DataTemplate views:Ofertas}"
+            Icon="fire_burn.png"
+            Route="ofertas" />
+
+        <ShellContent
+            Title="Minhas Viagens"
+            ContentTemplate="{DataTemplate views:MinhasViagens}"
+            Icon="bag_alt.png"
+            Route="minhas-viagens" />
+
+        <ShellContent
+            Title="Meus Locais Favoritos"
+            ContentTemplate="{DataTemplate views:MeusFavoritos}"
+            Icon="heart.png"
+            Route="meus-favoritos" />
+
+        <ShellContent
+            Title="Perfil"
+            ContentTemplate="{DataTemplate views:Perfil}"
+            Icon="ui_user.png"
+            Route="perfil" />
     </TabBar>
 
+    <ShellContent
+        Title="Login"
+        ContentTemplate="{DataTemplate views:Login}"
+        Route="login" />
 </Shell>
