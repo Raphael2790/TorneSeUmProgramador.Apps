@@ -7,40 +7,35 @@
     Shell.FlyoutBehavior="Disabled"
     Shell.NavBarIsVisible="False">
 
+    <ShellContent
+        Title="Login"
+        ContentTemplate="{DataTemplate views:Login}"
+        Route="login" />
+
     <TabBar>
         <ShellContent
-            Title="Home"
             ContentTemplate="{DataTemplate views:PaginaInicial}"
             Icon="search.png"
             Route="home" />
 
         <ShellContent
-            Title="Ofertas"
             ContentTemplate="{DataTemplate views:Ofertas}"
             Icon="fire_burn.png"
             Route="ofertas" />
 
         <ShellContent
-            Title="Minhas Viagens"
             ContentTemplate="{DataTemplate views:MinhasViagens}"
             Icon="bag_alt.png"
             Route="minhas-viagens" />
 
         <ShellContent
-            Title="Meus Locais Favoritos"
             ContentTemplate="{DataTemplate views:MeusFavoritos}"
             Icon="heart.png"
             Route="meus-favoritos" />
 
         <ShellContent
-            Title="Perfil"
             ContentTemplate="{DataTemplate views:Perfil}"
             Icon="ui_user.png"
             Route="perfil" />
     </TabBar>
-
-    <ShellContent
-        Title="Login"
-        ContentTemplate="{DataTemplate views:Login}"
-        Route="login" />
 </Shell>
