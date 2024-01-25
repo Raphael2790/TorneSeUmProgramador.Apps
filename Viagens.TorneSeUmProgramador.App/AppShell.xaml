@@ -6,12 +6,6 @@
     xmlns:views="clr-namespace:Viagens.TorneSeUmProgramador.App.Views"
     Shell.FlyoutBehavior="Disabled"
     Shell.NavBarIsVisible="False">
-
-    <ShellContent
-        Title="Login"
-        ContentTemplate="{DataTemplate views:Login}"
-        Route="login" />
-
     <TabBar>
         <ShellContent
             ContentTemplate="{DataTemplate views:PaginaInicial}"
@@ -38,4 +32,9 @@
             Icon="ui_user.png"
             Route="perfil" />
     </TabBar>
+
+    <ShellContent
+        Title="Login"
+        ContentTemplate="{DataTemplate views:Login}"
+        Route="login" />
 </Shell>
