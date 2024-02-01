@@ -3,109 +3,109 @@
     x:Class="Viagens.TorneSeUmProgramador.App.Views.PaginaInicial"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
-    <FlexLayout Direction="Column" JustifyContent="SpaceBetween">
-        <VerticalStackLayout Padding="20" Spacing="30">
-            <Grid
-                Padding="10"
-                ColumnDefinitions="*,Auto"
-                RowDefinitions="*, Auto">
-                <Label FontSize="20" Text="Olá Raphael," />
-                <Label
-                    Grid.Row="1"
-                    FontAttributes="Bold"
-                    FontSize="24"
-                    Text="Encontre Ofertas" />
-                <Image
-                    Grid.RowSpan="2"
-                    Grid.ColumnSpan="2"
-                    HorizontalOptions="EndAndExpand"
-                    Source="avatar_user.png"
-                    WidthRequest="50" />
-            </Grid>
+    <ScrollView>
+        <FlexLayout Direction="Column" JustifyContent="SpaceBetween">
+            <VerticalStackLayout Padding="20" Spacing="30">
+                <Grid
+                    Padding="10"
+                    ColumnDefinitions="*,Auto"
+                    RowDefinitions="*, Auto">
+                    <Label FontSize="20" Text="Olá Raphael," />
+                    <Label
+                        Grid.Row="1"
+                        FontAttributes="Bold"
+                        FontSize="24"
+                        Text="Encontre Ofertas" />
+                    <Image
+                        Grid.RowSpan="2"
+                        Grid.ColumnSpan="2"
+                        HorizontalOptions="EndAndExpand"
+                        Source="avatar_user.png"
+                        WidthRequest="50" />
+                </Grid>
 
-            <Border
-                Margin="0,20"
-                BackgroundColor="{StaticResource Gray200}"
-                StrokeShape="RoundRectangle 31">
-                <SearchBar Placeholder="Onde você deseja conhecer?" />
-            </Border>
+                <Border
+                    Margin="0,20"
+                    BackgroundColor="{StaticResource Gray200}"
+                    StrokeShape="RoundRectangle 31">
+                    <SearchBar Placeholder="Onde você deseja conhecer?" />
+                </Border>
 
-            <VerticalStackLayout Spacing="10">
-                <Label
-                    FontAttributes="Bold"
-                    FontSize="20"
-                    Text="Reserve" />
-                <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
-                    <Border
-                        Padding="10"
-                        BackgroundColor="#7680F4"
-                        StrokeShape="RoundRectangle 5">
-                        <Image Source="aviao.png" WidthRequest="55" />
-                    </Border>
-                    <Border
-                        Padding="10"
-                        BackgroundColor="#FE713F"
-                        StrokeShape="RoundRectangle 5">
-                        <Image Source="onibus.png" WidthRequest="55" />
-                    </Border>
-                    <Border
-                        Padding="10"
-                        BackgroundColor="#FBC066"
-                        StrokeShape="RoundRectangle 5">
-                        <Image Source="hotel.png" WidthRequest="55" />
-                    </Border>
-                    <Border
-                        Padding="10"
-                        BackgroundColor="#00AAFE"
-                        StrokeShape="RoundRectangle 5">
-                        <Image Source="location.png" WidthRequest="55" />
-                    </Border>
-                </FlexLayout>
-            </VerticalStackLayout>
-        </VerticalStackLayout>
-
-        <VerticalStackLayout Padding="20" Spacing="40">
-            <StackLayout Orientation="Horizontal">
-                <Label
-                    FontAttributes="Bold"
-                    FontSize="20"
-                    Text="Mais Buscados"
-                    VerticalOptions="Start" />
-                <Label
-                    HorizontalOptions="EndAndExpand"
-                    Text="Ver todos"
-                    VerticalOptions="Center" />
-            </StackLayout>
-            <CarouselView
-                x:Name="CarouselViewPrincipal"
-                Loop="False"
-                PeekAreaInsets="100,0">
-                <CarouselView.ItemTemplate>
-                    <DataTemplate>
+                <VerticalStackLayout Spacing="10">
+                    <Label Style="{StaticResource LabelTitle}" Text="Reserve" />
+                    <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
                         <Border
-                            BackgroundColor="{StaticResource Secondary}"
-                            HeightRequest="259"
-                            StrokeShape="RoundRectangle 20"
-                            WidthRequest="189">
-                            <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                                <Image
-                                    Aspect="AspectFill"
-                                    BackgroundColor="Black"
-                                    HeightRequest="185"
-                                    Source="{Binding Imagem}"
-                                    WidthRequest="155" />
-                                <VerticalStackLayout Margin="0,5,0,0">
-                                    <Label
-                                        FontAttributes="Bold"
-                                        FontSize="14"
-                                        Text="{Binding Titulo}" />
-                                    <Label FontSize="12" Text="{Binding Descricao}" />
-                                </VerticalStackLayout>
-                            </VerticalStackLayout>
+                            Padding="10"
+                            BackgroundColor="#7680F4"
+                            StrokeShape="RoundRectangle 5">
+                            <Image Source="aviao.png" WidthRequest="55" />
                         </Border>
-                    </DataTemplate>
-                </CarouselView.ItemTemplate>
-            </CarouselView>
-        </VerticalStackLayout>
-    </FlexLayout>
+                        <Border
+                            Padding="10"
+                            BackgroundColor="#FE713F"
+                            StrokeShape="RoundRectangle 5">
+                            <Image Source="onibus.png" WidthRequest="55" />
+                        </Border>
+                        <Border
+                            Padding="10"
+                            BackgroundColor="#FBC066"
+                            StrokeShape="RoundRectangle 5">
+                            <Image Source="hotel.png" WidthRequest="55" />
+                        </Border>
+                        <Border
+                            Padding="10"
+                            BackgroundColor="#00AAFE"
+                            StrokeShape="RoundRectangle 5">
+                            <Image Source="location.png" WidthRequest="55" />
+                        </Border>
+                    </FlexLayout>
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Padding="20" Spacing="40">
+                <StackLayout Orientation="Horizontal">
+                    <Label
+                        Style="{StaticResource LabelTitle}"
+                        Text="Mais Buscados"
+                        VerticalOptions="Start" />
+                    <Label
+                        HorizontalOptions="EndAndExpand"
+                        Text="Ver todos"
+                        TextColor="{StaticResource Primary}"
+                        TextDecorations="Underline"
+                        VerticalOptions="Center" />
+                </StackLayout>
+                <CarouselView
+                    x:Name="CarouselViewPrincipal"
+                    Loop="False"
+                    PeekAreaInsets="100,0">
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <Border
+                                BackgroundColor="{StaticResource Secondary}"
+                                HeightRequest="259"
+                                StrokeShape="RoundRectangle 20"
+                                WidthRequest="189">
+                                <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                                    <Image
+                                        Aspect="AspectFill"
+                                        BackgroundColor="Black"
+                                        HeightRequest="185"
+                                        Source="{Binding Imagem}"
+                                        WidthRequest="155" />
+                                    <VerticalStackLayout Margin="0,5,0,0">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="14"
+                                            Text="{Binding Titulo}" />
+                                        <Label FontSize="12" Text="{Binding Descricao}" />
+                                    </VerticalStackLayout>
+                                </VerticalStackLayout>
+                            </Border>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+            </VerticalStackLayout>
+        </FlexLayout>
+    </ScrollView>
 </ContentPage>

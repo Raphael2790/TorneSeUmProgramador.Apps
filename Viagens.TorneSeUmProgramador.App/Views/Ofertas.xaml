@@ -3,10 +3,104 @@
     x:Class="Viagens.TorneSeUmProgramador.App.Views.Ofertas"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
-    <VerticalStackLayout>
-        <Label
-            HorizontalOptions="Center"
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" />
-    </VerticalStackLayout>
+    <ScrollView>
+
+
+        <VerticalStackLayout Padding="20" Spacing="30">
+            <Grid
+                Padding="10"
+                ColumnDefinitions="*,Auto"
+                RowDefinitions="*, Auto">
+                <Label FontSize="20" Text="Olá Raphael," />
+                <Label
+                    Grid.Row="1"
+                    FontAttributes="Bold"
+                    FontSize="24"
+                    Text="Encontre Ofertas" />
+                <Image
+                    Grid.RowSpan="2"
+                    Grid.ColumnSpan="2"
+                    HorizontalOptions="EndAndExpand"
+                    Source="avatar_user.png"
+                    WidthRequest="50" />
+            </Grid>
+
+            <VerticalStackLayout>
+                <Label
+                    Margin="0,0,0,20"
+                    Style="{StaticResource LabelTitle}"
+                    Text="Melhores Ofertas" />
+                <Label Style="{StaticResource LabelSmall}" Text="Ordenar Por:" />
+                <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
+                    <HorizontalStackLayout Spacing="10">
+                        <CheckBox />
+                        <Label Text="Preço" VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="10">
+                        <CheckBox />
+                        <Label Text="Popularidade" VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="10">
+                        <CheckBox />
+                        <Label Text="Ativa" VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                </FlexLayout>
+                <Grid>
+
+                    <CollectionView x:Name="OfertasCollection" SelectionMode="None">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Vertical" Span="2" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Border
+                                    Margin="5"
+                                    Padding="0"
+                                    BackgroundColor="#7680F4">
+                                    <Grid Padding="10">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Image
+                                            Grid.Row="0"
+                                            Aspect="AspectFill"
+                                            Source="{Binding Imagem}" />
+                                        <StackLayout
+                                            Grid.Row="1"
+                                            BackgroundColor="Orange"
+                                            HorizontalOptions="FillAndExpand"
+                                            Orientation="Horizontal"
+                                            Spacing="0">
+                                            <Label
+                                                FontAttributes="Bold"
+                                                Text="{Binding Preco}"
+                                                TextColor="White" />
+                                            <Label
+                                                FontAttributes="Bold"
+                                                HorizontalOptions="EndAndExpand"
+                                                Text="SALE"
+                                                TextColor="White" />
+                                        </StackLayout>
+                                        <StackLayout
+                                            Grid.Row="2"
+                                            Padding="5,10"
+                                            Orientation="Vertical"
+                                            Spacing="0">
+                                            <Label
+                                                FontAttributes="Bold"
+                                                HorizontalOptions="Center"
+                                                Text="{Binding Local}" />
+                                            <Label HorizontalOptions="Center" Text="{Binding Data}" />
+                                        </StackLayout>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
