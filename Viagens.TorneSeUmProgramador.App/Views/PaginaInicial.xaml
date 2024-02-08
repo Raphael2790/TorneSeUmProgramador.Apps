@@ -36,25 +36,25 @@
                     <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
                         <Border
                             Padding="10"
-                            BackgroundColor="#7680F4"
+                            BackgroundColor="{StaticResource PassagemAerea}"
                             StrokeShape="RoundRectangle 5">
                             <Image Source="aviao.png" WidthRequest="55" />
                         </Border>
                         <Border
                             Padding="10"
-                            BackgroundColor="#FE713F"
+                            BackgroundColor="{StaticResource PassagemTerrestre}"
                             StrokeShape="RoundRectangle 5">
                             <Image Source="onibus.png" WidthRequest="55" />
                         </Border>
                         <Border
                             Padding="10"
-                            BackgroundColor="#FBC066"
+                            BackgroundColor="{StaticResource Hospedagem}"
                             StrokeShape="RoundRectangle 5">
                             <Image Source="hotel.png" WidthRequest="55" />
                         </Border>
                         <Border
                             Padding="10"
-                            BackgroundColor="#00AAFE"
+                            BackgroundColor="{StaticResource Completo}"
                             StrokeShape="RoundRectangle 5">
                             <Image Source="location.png" WidthRequest="55" />
                         </Border>
