@@ -6,6 +6,7 @@
     xmlns:views="clr-namespace:Viagens.TorneSeUmProgramador.App.Views"
     Shell.FlyoutBehavior="Disabled"
     Shell.NavBarIsVisible="False">
+
     <TabBar>
         <ShellContent
             ContentTemplate="{DataTemplate views:PaginaInicial}"

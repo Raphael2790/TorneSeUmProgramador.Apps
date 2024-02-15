@@ -3,8 +3,12 @@
     x:Class="Viagens.TorneSeUmProgramador.App.Views.Login"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:Viagens.TorneSeUmProgramador.App.ViewModels"
     Padding="20"
     BackgroundColor="#6067EC">
+    <ContentPage.BindingContext>
+        <vm:LoginViewModel />
+    </ContentPage.BindingContext>
     <FlexLayout
         Direction="Column"
         JustifyContent="SpaceAround"
@@ -25,9 +29,8 @@
                     Padding="5"
                     BackgroundColor="White"
                     StrokeShape="RoundRectangle 31">
-                    <StackLayout Orientation="Horizontal">
+                    <StackLayout x:Name="SenhaStackLayout" Orientation="Horizontal">
                         <Entry
-                            x:Name="SenhaEntry"
                             Margin="10,0,0,0"
                             BackgroundColor="White"
                             HorizontalOptions="FillAndExpand"
@@ -35,14 +38,13 @@
                             Placeholder="Senha"
                             PlaceholderColor="{StaticResource Gray400}" />
                         <Image
-                            x:Name="SenhaImage"
                             Margin="10,0"
                             HeightRequest="20"
                             HorizontalOptions="End"
                             Source="eyeclosed.png"
                             WidthRequest="25">
                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="SenhaImage_Tapped" />
+                                <TapGestureRecognizer Command="{Binding TapSenhaImageCommand}" CommandParameter="{x:Reference SenhaStackLayout}" />
                             </Image.GestureRecognizers>
                         </Image>
                     </StackLayout>

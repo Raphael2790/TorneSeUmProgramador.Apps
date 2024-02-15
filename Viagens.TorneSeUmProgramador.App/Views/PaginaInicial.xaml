@@ -2,7 +2,10 @@
 <ContentPage
     x:Class="Viagens.TorneSeUmProgramador.App.Views.PaginaInicial"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:dtos="clr-namespace:Viagens.TorneSeUmProgramador.Core.Dtos;assembly=Viagens.TorneSeUmProgramador.Core"
+    xmlns:vm="clr-namespace:Viagens.TorneSeUmProgramador.App.ViewModels"
+    x:DataType="vm:PaginaInicialViewModel">
     <ScrollView>
         <FlexLayout Direction="Column" JustifyContent="SpaceBetween">
             <VerticalStackLayout Padding="20" Spacing="30">
@@ -76,11 +79,11 @@
                         VerticalOptions="Center" />
                 </StackLayout>
                 <CarouselView
-                    x:Name="CarouselViewPrincipal"
+                    ItemsSource="{Binding MaisBuscados}"
                     Loop="False"
                     PeekAreaInsets="100,0">
                     <CarouselView.ItemTemplate>
-                        <DataTemplate>
+                        <DataTemplate x:DataType="dtos:MaisBuscadosDto">
                             <Border
                                 BackgroundColor="{StaticResource Secondary}"
                                 HeightRequest="259"
