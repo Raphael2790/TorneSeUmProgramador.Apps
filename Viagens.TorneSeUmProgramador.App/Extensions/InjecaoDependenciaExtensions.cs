@@ -1,5 +1,9 @@
 ﻿using Viagens.TorneSeUmProgramador.App.ViewModels;
 using Viagens.TorneSeUmProgramador.App.Views;
+using Viagens.TorneSeUmProgramador.Business.Services;
+using Viagens.TorneSeUmProgramador.Business.Services.Interfaces;
+using Viagens.TorneSeUmProgramador.Core.Interfaces;
+using Viagens.TorneSeUmProgramador.Data.Logger;
 
 namespace Viagens.TorneSeUmProgramador.App.Extensions;
 
@@ -12,7 +16,8 @@ public static class InjecaoDependenciaExtensions
             .ConfigurarServicos()
             .ConfigurarPersistencia()
             .ConfigurarClients()
-            .ConfigurarViews();
+            .ConfigurarViews()
+            .ConfigurarLogger();
     }
 
     private static IServiceCollection ConfigurarViewModels(this IServiceCollection services)
@@ -24,6 +29,7 @@ public static class InjecaoDependenciaExtensions
 
     private static IServiceCollection ConfigurarServicos(this IServiceCollection services)
     {
+        services.AddTransient<IBuscaService, BuscaService>();
         return services;
     }
 
@@ -51,6 +57,13 @@ public static class InjecaoDependenciaExtensions
         services.AddSingleton<MinhasViagens>();
         services.AddSingleton<Ofertas>();
         services.AddSingleton<Perfil>();
+        return services;
+    }
+
+    public static IServiceCollection ConfigurarLogger(this IServiceCollection services)
+    {
+        services.AddLogging();
+        services.AddSingleton(typeof(IAppLogger<>), typeof(AppLogger<>));
         return services;
     }
 }
