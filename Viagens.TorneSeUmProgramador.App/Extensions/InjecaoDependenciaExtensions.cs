@@ -1,8 +1,10 @@
-﻿using Viagens.TorneSeUmProgramador.App.ViewModels;
+﻿using Flurl.Http.Configuration;
+using Viagens.TorneSeUmProgramador.App.ViewModels;
 using Viagens.TorneSeUmProgramador.App.Views;
 using Viagens.TorneSeUmProgramador.Business.Services;
 using Viagens.TorneSeUmProgramador.Business.Services.Interfaces;
 using Viagens.TorneSeUmProgramador.Core.Interfaces;
+using Viagens.TorneSeUmProgramador.Data.Clients;
 using Viagens.TorneSeUmProgramador.Data.Logger;
 
 namespace Viagens.TorneSeUmProgramador.App.Extensions;
@@ -45,6 +47,11 @@ public static class InjecaoDependenciaExtensions
 
     private static IServiceCollection ConfigurarClients(this IServiceCollection services)
     {
+        services.AddSingleton(sp =>
+            new FlurlClientCache()
+                .Add("viagens-api-client", "https://localhost:44326/")
+        );
+        services.AddSingleton<IViagensApiClient, ViagensApiClient>();
         return services;
     }
 
