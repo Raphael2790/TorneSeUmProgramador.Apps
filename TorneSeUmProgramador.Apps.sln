@@ -17,9 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Viagens.TorneSeUmProgramado
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Viagens.TorneSeUmProgramador.Core", "Viagens.TorneSeUmProgramador.Core\Viagens.TorneSeUmProgramador.Core.csproj", "{B9201970-1477-4F6D-98D1-3639A0B50F69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Viagens.TorneSeUmProgramador.Business", "Viagens.TorneSeUmProgramador.Business\Viagens.TorneSeUmProgramador.Business.csproj", "{28F6A74B-F843-4EF8-ABF5-AC9076461FBD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Viagens.TorneSeUmProgramador.Business", "Viagens.TorneSeUmProgramador.Business\Viagens.TorneSeUmProgramador.Business.csproj", "{28F6A74B-F843-4EF8-ABF5-AC9076461FBD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Viagens.TorneSeUmProgramador.Data", "Viagens.TorneSeUmProgramador.Data\Viagens.TorneSeUmProgramador.Data.csproj", "{D2492905-BBB7-41BC-9FAB-AC3E9AA5A838}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Viagens.TorneSeUmProgramador.Data", "Viagens.TorneSeUmProgramador.Data\Viagens.TorneSeUmProgramador.Data.csproj", "{D2492905-BBB7-41BC-9FAB-AC3E9AA5A838}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -68,6 +68,9 @@ Global
 		{F5CD1FE5-6038-4E97-B354-96C8C392B7B5} = {908EA5A0-50E7-4E86-AA1F-06D7CF9A0859}
 		{FA06DE62-C9FC-427A-9233-DADFA7E54F2C} = {908EA5A0-50E7-4E86-AA1F-06D7CF9A0859}
 		{7110B806-29CA-4CC3-A548-67026E48C177} = {4EB23D6E-8503-45F4-97DE-60083902DF27}
+		{B9201970-1477-4F6D-98D1-3639A0B50F69} = {4EB23D6E-8503-45F4-97DE-60083902DF27}
+		{28F6A74B-F843-4EF8-ABF5-AC9076461FBD} = {4EB23D6E-8503-45F4-97DE-60083902DF27}
+		{D2492905-BBB7-41BC-9FAB-AC3E9AA5A838} = {4EB23D6E-8503-45F4-97DE-60083902DF27}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AB4EB656-919F-46D8-A6BF-86C8C9DDA9DB}
