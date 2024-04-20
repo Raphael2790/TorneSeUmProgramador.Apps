@@ -81,21 +81,19 @@
                 <CarouselView
                     ItemsSource="{Binding MaisBuscados}"
                     Loop="False"
-                    PeekAreaInsets="100,0">
+                    PeekAreaInsets="100,0"
+                    EmptyView="Não foi possível buscar os resultados...">
                     <CarouselView.ItemTemplate>
                         <DataTemplate x:DataType="dtos:MaisBuscadosDto">
                             <Border
                                 BackgroundColor="{StaticResource Secondary}"
-                                HeightRequest="259"
                                 StrokeShape="RoundRectangle 20"
-                                WidthRequest="189">
+                                Padding="10">
                                 <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
                                     <Image
                                         Aspect="AspectFill"
                                         BackgroundColor="Black"
-                                        HeightRequest="185"
-                                        Source="{Binding Imagem}"
-                                        WidthRequest="155" />
+                                        Source="{Binding Imagem}" />
                                     <VerticalStackLayout Margin="0,5,0,0">
                                         <Label
                                             FontAttributes="Bold"
