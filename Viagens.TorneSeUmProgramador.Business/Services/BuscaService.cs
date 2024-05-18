@@ -10,13 +10,13 @@ namespace Viagens.TorneSeUmProgramador.Business.Services;
 public class BuscaService : IBuscaService
 {
     private readonly IAppLogger<BuscaService> _logger;
-    private readonly IViagensApiClient _viagensApiClient;
+    private readonly IViagensProxy _viagensProxy;
     private readonly ILocalizacaoService _localizacaoService;
 
-    public BuscaService(IAppLogger<BuscaService> logger, IViagensApiClient viagensApiClient, ILocalizacaoService localizacaoService)
+    public BuscaService(IAppLogger<BuscaService> logger, IViagensProxy viagensProxy, ILocalizacaoService localizacaoService)
     {
         _logger = logger;
-        _viagensApiClient = viagensApiClient;
+        _viagensProxy = viagensProxy;
         _localizacaoService = localizacaoService;
     }
 
@@ -26,7 +26,7 @@ public class BuscaService : IBuscaService
 		{
             _logger.Informacao("Buscando viagens mais buscadas");
 
-			var maisBuscados = await _viagensApiClient.ObterMaisBuscados();
+			var maisBuscados = await _viagensProxy.ObterMaisBuscados();
 
             foreach (var viagem in maisBuscados)
             {
