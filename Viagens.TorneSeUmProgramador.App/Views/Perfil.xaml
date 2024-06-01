@@ -6,7 +6,10 @@
     <VerticalStackLayout>
         <Label
             HorizontalOptions="Center"
-            Text="Welcome to .NET MAUI!"
+            Text="Tirar foto perfil"
             VerticalOptions="Center" />
+        <Button
+            Clicked="Button_Clicked"
+            Text="Tirar foto" />
     </VerticalStackLayout>
 </ContentPage>

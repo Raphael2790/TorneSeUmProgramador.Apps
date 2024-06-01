@@ -30,6 +30,7 @@ public static class InjecaoDependenciaExtensions
     {
         services.AddTransient<LoginViewModel>();
         services.AddTransient<PaginaInicialViewModel>();
+        services.AddTransient<OfertasViewModel>();
         return services;
     }
 
@@ -61,7 +62,7 @@ public static class InjecaoDependenciaExtensions
     {
         services.AddSingleton(sp =>
             new FlurlClientCache()
-                .Add("viagens-api-client", "https://8817-2804-14c-96-8b89-dcb2-1023-8bf0-4aef.ngrok-free.app/")
+                .Add("viagens-api-client", "https://77fd-2804-14c-96-8b89-f4f8-6fa2-a89-27d.ngrok-free.app/")
         );
         services.AddSingleton<IViagensApiClient, ViagensApiClient>();
 

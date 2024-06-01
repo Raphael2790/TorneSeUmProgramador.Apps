@@ -4,11 +4,14 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:converters="clr-namespace:Viagens.TorneSeUmProgramador.App.Utils.Converters"
-    xmlns:templateSelector="clr-namespace:Viagens.TorneSeUmProgramador.App.Utils.TemplateSelectors">
+    xmlns:templateSelector="clr-namespace:Viagens.TorneSeUmProgramador.App.Utils.TemplateSelectors"
+    xmlns:vm="clr-namespace:Viagens.TorneSeUmProgramador.App.ViewModels"
+    xmlns:dtos="clr-namespace:Viagens.TorneSeUmProgramador.Core.Dtos;assembly=Viagens.TorneSeUmProgramador.Core"
+    x:DataType="vm:OfertasViewModel">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:TipoPacoteParaCorConverter x:Key="TipoPacoteParaCorConverter" />
-            <DataTemplate x:Key="ItemParTemplate">
+            <DataTemplate x:Key="ItemParTemplate" x:DataType="dtos:OfertaDto">
                 <Border
                     Margin="0,0,0,20"
                     BackgroundColor="{Binding TipoPacote, Converter={StaticResource TipoPacoteParaCorConverter}}"
@@ -69,7 +72,7 @@
                     </Grid>
                 </Border>
             </DataTemplate>
-            <DataTemplate x:Key="ItemImparTemplate">
+            <DataTemplate x:Key="ItemImparTemplate" x:DataType="dtos:OfertaDto">
                 <Border
                     Margin="0,20,0,0"
                     BackgroundColor="{Binding TipoPacote, Converter={StaticResource TipoPacoteParaCorConverter}}"
@@ -187,7 +190,7 @@
                 VerticalOptions="StartAndExpand"
                 ZIndex="1" />
             <CollectionView
-                x:Name="OfertasCollection"
+                ItemsSource="{Binding Ofertas}"
                 Grid.Row="1"
                 Margin="-5,10"
                 ItemTemplate="{StaticResource AlinhamentoCardTemplateSelector}"
