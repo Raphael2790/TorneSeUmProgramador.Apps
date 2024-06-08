@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Viagens.TorneSeUmProgramador.App.Views.Components.AvatarUsuario"
+             xmlns:vm="clr-namespace:Viagens.TorneSeUmProgramador.App.ViewModels.Components"
+             x:DataType="vm:AvatarUsuarioViewModel"
+             >
+    <Grid
+        ColumnDefinitions="*,Auto"
+        RowDefinitions="*, Auto">
+            <Label FontSize="20" 
+                   Text="{Binding NomeUsuario, StringFormat='Bom dia {0},'}" />
+            <Label
+            Grid.Row="1"
+            FontAttributes="Bold"
+            FontSize="24"
+            Text="{Binding MensagemTela}" />
+        <Grid
+            Grid.RowSpan="2"
+            Grid.ColumnSpan="2">
+            <Image
+                
+                HorizontalOptions="EndAndExpand"
+                Source="{Binding FotoUsuario}"
+                WidthRequest="50" 
+                Aspect="Fill"/>
+            <Image
+                HorizontalOptions="End"
+                VerticalOptions="End"
+                ZIndex="1"
+                Source="camera.png"
+                WidthRequest="20"
+                IsVisible="{Binding ExibirIconeTela}">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding AdicionarFotoAvatarCommand}" />
+                </Image.GestureRecognizers>
+            </Image>
+        </Grid>
+    </Grid>
+</ContentView>

@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Viagens.TorneSeUmProgramador.App.AppServices;
 using Viagens.TorneSeUmProgramador.App.Storages;
 using Viagens.TorneSeUmProgramador.App.ViewModels;
+using Viagens.TorneSeUmProgramador.App.ViewModels.Components;
 using Viagens.TorneSeUmProgramador.App.Views;
 using Viagens.TorneSeUmProgramador.Business.Services;
 using Viagens.TorneSeUmProgramador.Business.Services.Interfaces;
@@ -31,6 +32,7 @@ public static class InjecaoDependenciaExtensions
         services.AddTransient<LoginViewModel>();
         services.AddTransient<PaginaInicialViewModel>();
         services.AddTransient<OfertasViewModel>();
+        services.AddTransient<AvatarUsuarioViewModel>();
         return services;
     }
 
@@ -44,6 +46,7 @@ public static class InjecaoDependenciaExtensions
         //serviços nativos
         services.AddSingleton<IConnectivity>(Connectivity.Current);
         services.AddSingleton<IGeolocation>(Geolocation.Default);
+        services.AddSingleton<IMediaPicker>(MediaPicker.Default);
 
         return services;
     }
@@ -62,7 +65,7 @@ public static class InjecaoDependenciaExtensions
     {
         services.AddSingleton(sp =>
             new FlurlClientCache()
-                .Add("viagens-api-client", "https://77fd-2804-14c-96-8b89-f4f8-6fa2-a89-27d.ngrok-free.app/")
+                .Add("viagens-api-client", "https://4f8f-2804-14c-96-8b89-fdc8-6fd8-1793-cdb8.ngrok-free.app/")
         );
         services.AddSingleton<IViagensApiClient, ViagensApiClient>();
 
