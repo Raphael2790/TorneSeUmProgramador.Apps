@@ -3,18 +3,15 @@
     x:Class="Viagens.TorneSeUmProgramador.App.Views.PaginaInicial"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:components="clr-namespace:Viagens.TorneSeUmProgramador.App.Views.Components"
     xmlns:dtos="clr-namespace:Viagens.TorneSeUmProgramador.Core.Dtos;assembly=Viagens.TorneSeUmProgramador.Core"
     xmlns:vm="clr-namespace:Viagens.TorneSeUmProgramador.App.ViewModels"
-    xmlns:components="clr-namespace:Viagens.TorneSeUmProgramador.App.Views.Components"
     x:DataType="vm:PaginaInicialViewModel">
     <ScrollView>
         <FlexLayout Direction="Column" JustifyContent="SpaceBetween">
             <VerticalStackLayout Padding="20" Spacing="30">
-                
-                <components:AvatarUsuario NomeUsuario="Pedro" 
-                                          FotoUsuario="avatar_user.png"
-                                          MensagemTela="Encontre Ofertas"
-                                          TelaComponente="Inicial"/>
+
+                <components:AvatarUsuario MensagemTela="Encontre Ofertas" TelaComponente="Inicial" />
 
                 <Border
                     Margin="0,20"
@@ -67,23 +64,24 @@
                         TextDecorations="Underline"
                         VerticalOptions="Center" />
                 </StackLayout>
-                <Label FontSize="12"
-                       Text="Não foi possível recuperar a informação. Sem acesso a internet."
-                       TextColor="{StaticResource PassagemTerrestre}"
-                       IsVisible="{Binding ConexaoInterrompida}"
-                       Margin="0"
-                       Padding="0"/>
+                <Label
+                    Margin="0"
+                    Padding="0"
+                    FontSize="12"
+                    IsVisible="{Binding ConexaoInterrompida}"
+                    Text="Não foi possível recuperar a informação. Sem acesso a internet."
+                    TextColor="{StaticResource PassagemTerrestre}" />
                 <CarouselView
+                    EmptyView="Não foi possível buscar os resultados..."
                     ItemsSource="{Binding MaisBuscados}"
                     Loop="False"
-                    PeekAreaInsets="100,0"
-                    EmptyView="Não foi possível buscar os resultados...">
+                    PeekAreaInsets="100,0">
                     <CarouselView.ItemTemplate>
                         <DataTemplate x:DataType="dtos:MaisBuscadosDto">
                             <Border
+                                Padding="10"
                                 BackgroundColor="{StaticResource Secondary}"
-                                StrokeShape="RoundRectangle 20"
-                                Padding="10">
+                                StrokeShape="RoundRectangle 20">
                                 <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
                                     <Image
                                         Aspect="AspectFill"
@@ -93,7 +91,10 @@
                                         <Label>
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{Binding Titulo}" FontAttributes="Bold" FontSize="14"/>
+                                                    <Span
+                                                        FontAttributes="Bold"
+                                                        FontSize="14"
+                                                        Text="{Binding Titulo}" />
                                                     <Span Text=" - " />
                                                     <Span Text="{Binding Distancia, StringFormat='Distância {0}'}" />
                                                 </FormattedString>

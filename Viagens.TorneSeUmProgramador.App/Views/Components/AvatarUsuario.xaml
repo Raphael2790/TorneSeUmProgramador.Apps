@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Viagens.TorneSeUmProgramador.App.Views.Components.AvatarUsuario"
-             xmlns:vm="clr-namespace:Viagens.TorneSeUmProgramador.App.ViewModels.Components"
-             x:DataType="vm:AvatarUsuarioViewModel"
-             >
-    <Grid
-        ColumnDefinitions="*,Auto"
-        RowDefinitions="*, Auto">
-            <Label FontSize="20" 
-                   Text="{Binding NomeUsuario, StringFormat='Bom dia {0},'}" />
-            <Label
+<ContentView
+    x:Class="Viagens.TorneSeUmProgramador.App.Views.Components.AvatarUsuario"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:Viagens.TorneSeUmProgramador.App.ViewModels.Components"
+    x:DataType="vm:AvatarUsuarioViewModel">
+    <Grid ColumnDefinitions="*,Auto" RowDefinitions="*, Auto">
+        <Label FontSize="20" Text="{Binding NomeUsuario, StringFormat='Bom dia {0},'}" />
+        <Label
             Grid.Row="1"
             FontAttributes="Bold"
             FontSize="24"
             Text="{Binding MensagemTela}" />
-        <Grid
-            Grid.RowSpan="2"
-            Grid.ColumnSpan="2">
-            <Image
-                
+        <Grid Grid.RowSpan="2" Grid.ColumnSpan="2">
+            <Border
+                BackgroundColor="Transparent"
+                HeightRequest="50"
                 HorizontalOptions="EndAndExpand"
-                Source="{Binding FotoUsuario}"
-                WidthRequest="50" 
-                Aspect="Fill"/>
+                StrokeShape="RoundRectangle 25"
+                WidthRequest="50">
+                <Image
+                    Aspect="Fill"
+                    HorizontalOptions="EndAndExpand"
+                    Source="{Binding FotoUsuario}"
+                    WidthRequest="50" />
+            </Border>
             <Image
                 HorizontalOptions="End"
-                VerticalOptions="End"
-                ZIndex="1"
+                IsVisible="{Binding ExibirIconeTela}"
                 Source="camera.png"
+                VerticalOptions="End"
                 WidthRequest="20"
-                IsVisible="{Binding ExibirIconeTela}">
+                ZIndex="1">
                 <Image.GestureRecognizers>
-                    <TapGestureRecognizer
-                        Command="{Binding AdicionarFotoAvatarCommand}" />
+                    <TapGestureRecognizer Command="{Binding AdicionarFotoAvatarCommand}" />
                 </Image.GestureRecognizers>
             </Image>
         </Grid>

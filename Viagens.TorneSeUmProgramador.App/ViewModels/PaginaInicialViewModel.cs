@@ -2,7 +2,9 @@
 using System.Collections.ObjectModel;
 using Viagens.TorneSeUmProgramador.Business.Services.Interfaces;
 using Viagens.TorneSeUmProgramador.Core.Common;
+using Viagens.TorneSeUmProgramador.Core.Constantes;
 using Viagens.TorneSeUmProgramador.Core.Dtos;
+using Viagens.TorneSeUmProgramador.Core.Interfaces;
 
 namespace Viagens.TorneSeUmProgramador.App.ViewModels;
 
@@ -17,7 +19,8 @@ public sealed partial class PaginaInicialViewModel : ObservableObject
     [ObservableProperty]
     private bool conexaoInterrompida;
 
-    public PaginaInicialViewModel(IBuscaService buscaService, IConnectivity connectivity)
+    public PaginaInicialViewModel(IBuscaService buscaService, 
+                                  IConnectivity connectivity)
     {
         _buscaService = buscaService;
         _connectivity = connectivity;

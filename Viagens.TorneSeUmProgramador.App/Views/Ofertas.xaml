@@ -3,11 +3,11 @@
     x:Class="Viagens.TorneSeUmProgramador.App.Views.Ofertas"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:components="clr-namespace:Viagens.TorneSeUmProgramador.App.Views.Components"
     xmlns:converters="clr-namespace:Viagens.TorneSeUmProgramador.App.Utils.Converters"
+    xmlns:dtos="clr-namespace:Viagens.TorneSeUmProgramador.Core.Dtos;assembly=Viagens.TorneSeUmProgramador.Core"
     xmlns:templateSelector="clr-namespace:Viagens.TorneSeUmProgramador.App.Utils.TemplateSelectors"
     xmlns:vm="clr-namespace:Viagens.TorneSeUmProgramador.App.ViewModels"
-    xmlns:dtos="clr-namespace:Viagens.TorneSeUmProgramador.Core.Dtos;assembly=Viagens.TorneSeUmProgramador.Core"
-    xmlns:components="clr-namespace:Viagens.TorneSeUmProgramador.App.Views.Components"
     x:DataType="vm:OfertasViewModel">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -145,11 +145,9 @@
         ColumnDefinitions="*"
         RowDefinitions="*,5*">
         <VerticalStackLayout>
-            
-            <components:AvatarUsuario NomeUsuario="Pedro" 
-                          FotoUsuario="avatar_user.png"
-                          MensagemTela="Encontre Promoções"
-                          TelaComponente="Ofertas"/>
+
+            <components:AvatarUsuario MensagemTela="Encontre Promoções" TelaComponente="Ofertas" />
+
             <Border
                 Grid.Row="1"
                 Margin="0,20"
@@ -192,10 +190,10 @@
                 VerticalOptions="StartAndExpand"
                 ZIndex="1" />
             <CollectionView
-                ItemsSource="{Binding Ofertas}"
                 Grid.Row="1"
                 Margin="-5,10"
                 ItemTemplate="{StaticResource AlinhamentoCardTemplateSelector}"
+                ItemsSource="{Binding Ofertas}"
                 SelectionMode="None">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical" Span="2" />
