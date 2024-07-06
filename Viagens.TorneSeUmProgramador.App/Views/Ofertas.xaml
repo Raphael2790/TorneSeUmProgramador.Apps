@@ -9,196 +9,208 @@
     xmlns:templateSelector="clr-namespace:Viagens.TorneSeUmProgramador.App.Utils.TemplateSelectors"
     xmlns:vm="clr-namespace:Viagens.TorneSeUmProgramador.App.ViewModels"
     x:DataType="vm:OfertasViewModel">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <converters:TipoPacoteParaCorConverter x:Key="TipoPacoteParaCorConverter" />
-            <DataTemplate x:Key="ItemParTemplate" x:DataType="dtos:OfertaDto">
-                <Border
-                    Margin="0,0,0,20"
-                    BackgroundColor="{Binding TipoPacote, Converter={StaticResource TipoPacoteParaCorConverter}}"
-                    StrokeShape="RoundRectangle 20">
-                    <Grid Padding="10">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <Border Margin="-5" StrokeShape="RoundRectangle 20 20 0 0">
-                            <Image Aspect="AspectFill" Source="{Binding Imagem}" />
-                        </Border>
-                        <Image
-                            Margin="2"
-                            HorizontalOptions="Start"
-                            Source="chama_icon.png"
-                            VerticalOptions="Start" />
-                        <Border
-                            Margin="2"
-                            BackgroundColor="{StaticResource Gray100}"
-                            HorizontalOptions="EndAndExpand"
-                            StrokeShape="RoundRectangle 20"
-                            VerticalOptions="StartAndExpand">
+    <ScrollView>
+        <ContentPage.Resources>
+            <ResourceDictionary>
+                <converters:TipoPacoteParaCorConverter x:Key="TipoPacoteParaCorConverter" />
+                <DataTemplate x:Key="ItemParTemplate" x:DataType="dtos:OfertaDto">
+                    <Border
+                        Margin="0,0,0,0"
+                        BackgroundColor="{Binding TipoPacote, Converter={StaticResource TipoPacoteParaCorConverter}}"
+                        StrokeShape="RoundRectangle 20">
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Border Margin="-5" StrokeShape="RoundRectangle 20 20 0 0">
+                                <Image Aspect="AspectFill" Source="{Binding Imagem}" />
+                            </Border>
+                            <Image
+                                Margin="2"
+                                HorizontalOptions="Start"
+                                Source="chama_icon.png"
+                                VerticalOptions="Start" />
+                            <Border
+                                Margin="2"
+                                BackgroundColor="{StaticResource Gray100}"
+                                HorizontalOptions="EndAndExpand"
+                                StrokeShape="RoundRectangle 20"
+                                VerticalOptions="StartAndExpand">
+                                <StackLayout
+                                    Padding="4"
+                                    HorizontalOptions="FillAndExpand"
+                                    Orientation="Vertical">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="8"
+                                        HorizontalOptions="Center"
+                                        Text="{Binding PrecoAnterior, StringFormat='{0:C}'}"
+                                        TextColor="Black"
+                                        TextDecorations="Strikethrough"
+                                        VerticalOptions="Center" />
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="12"
+                                        HorizontalOptions="Center"
+                                        Text="{Binding Preco, StringFormat='{0:C}'}"
+                                        TextColor="Black"
+                                        VerticalOptions="Center" />
+                                </StackLayout>
+                            </Border>
                             <StackLayout
-                                Padding="4"
-                                HorizontalOptions="FillAndExpand"
+                                Grid.Row="1"
+                                Margin="0,10,0,0"
                                 Orientation="Vertical">
                                 <Label
                                     FontAttributes="Bold"
-                                    FontSize="8"
                                     HorizontalOptions="Center"
-                                    Text="{Binding PrecoAnterior, StringFormat='{0:C}'}"
-                                    TextColor="Black"
-                                    TextDecorations="Strikethrough"
-                                    VerticalOptions="Center" />
+                                    Text="{Binding Local}" />
                                 <Label
-                                    FontAttributes="Bold"
-                                    FontSize="12"
                                     HorizontalOptions="Center"
-                                    Text="{Binding Preco, StringFormat='{0:C}'}"
-                                    TextColor="Black"
-                                    VerticalOptions="Center" />
+                                    Text="{Binding Data}"
+                                    TextColor="White" />
                             </StackLayout>
-                        </Border>
-                        <StackLayout
-                            Grid.Row="1"
-                            Margin="0,10,0,0"
-                            Orientation="Vertical">
-                            <Label
-                                FontAttributes="Bold"
-                                HorizontalOptions="Center"
-                                Text="{Binding Local}" />
-                            <Label
-                                HorizontalOptions="Center"
-                                Text="{Binding Data}"
-                                TextColor="White" />
-                        </StackLayout>
-                    </Grid>
-                </Border>
-            </DataTemplate>
-            <DataTemplate x:Key="ItemImparTemplate" x:DataType="dtos:OfertaDto">
-                <Border
-                    Margin="0,20,0,0"
-                    BackgroundColor="{Binding TipoPacote, Converter={StaticResource TipoPacoteParaCorConverter}}"
-                    StrokeShape="RoundRectangle 20">
-                    <Grid Padding="10">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <Border Margin="-5" StrokeShape="RoundRectangle 20 20 0 0">
-                            <Image Aspect="AspectFill" Source="{Binding Imagem}" />
-                        </Border>
-                        <Image
-                            Margin="2"
-                            HorizontalOptions="Start"
-                            Source="chama_icon.png"
-                            VerticalOptions="Start" />
-                        <Border
-                            Margin="2"
-                            BackgroundColor="{StaticResource Gray100}"
-                            HorizontalOptions="EndAndExpand"
-                            StrokeShape="RoundRectangle 20"
-                            VerticalOptions="StartAndExpand">
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+                <DataTemplate x:Key="ItemImparTemplate" x:DataType="dtos:OfertaDto">
+                    <Border
+                        Margin="0,20,0,0"
+                        BackgroundColor="{Binding TipoPacote, Converter={StaticResource TipoPacoteParaCorConverter}}"
+                        StrokeShape="RoundRectangle 20">
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Border Margin="-5" StrokeShape="RoundRectangle 20 20 0 0">
+                                <Image Aspect="AspectFill" Source="{Binding Imagem}" />
+                            </Border>
+                            <Image
+                                Margin="2"
+                                HorizontalOptions="Start"
+                                Source="chama_icon.png"
+                                VerticalOptions="Start" />
+                            <Border
+                                Margin="2"
+                                BackgroundColor="{StaticResource Gray100}"
+                                HorizontalOptions="EndAndExpand"
+                                StrokeShape="RoundRectangle 20"
+                                VerticalOptions="StartAndExpand">
+                                <StackLayout
+                                    Padding="4"
+                                    HorizontalOptions="FillAndExpand"
+                                    Orientation="Vertical">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="8"
+                                        HorizontalOptions="Center"
+                                        Text="{Binding PrecoAnterior, StringFormat='{0:C}'}"
+                                        TextColor="Black"
+                                        TextDecorations="Strikethrough"
+                                        VerticalOptions="Center" />
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="12"
+                                        HorizontalOptions="Center"
+                                        Text="{Binding Preco, StringFormat='{0:C}'}"
+                                        TextColor="Black"
+                                        VerticalOptions="Center" />
+                                </StackLayout>
+                            </Border>
                             <StackLayout
-                                Padding="4"
-                                HorizontalOptions="FillAndExpand"
+                                Grid.Row="1"
+                                Margin="0,10,0,0"
                                 Orientation="Vertical">
                                 <Label
                                     FontAttributes="Bold"
-                                    FontSize="8"
                                     HorizontalOptions="Center"
-                                    Text="{Binding PrecoAnterior, StringFormat='{0:C}'}"
-                                    TextColor="Black"
-                                    TextDecorations="Strikethrough"
-                                    VerticalOptions="Center" />
+                                    Text="{Binding Local}" />
                                 <Label
-                                    FontAttributes="Bold"
-                                    FontSize="12"
                                     HorizontalOptions="Center"
-                                    Text="{Binding Preco, StringFormat='{0:C}'}"
-                                    TextColor="Black"
-                                    VerticalOptions="Center" />
+                                    Text="{Binding Data}"
+                                    TextColor="White" />
                             </StackLayout>
-                        </Border>
-                        <StackLayout
-                            Grid.Row="1"
-                            Margin="0,10,0,0"
-                            Orientation="Vertical">
-                            <Label
-                                FontAttributes="Bold"
-                                HorizontalOptions="Center"
-                                Text="{Binding Local}" />
-                            <Label
-                                HorizontalOptions="Center"
-                                Text="{Binding Data}"
-                                TextColor="White" />
-                        </StackLayout>
-                    </Grid>
-                </Border>
-            </DataTemplate>
-            <templateSelector:AlinhamentoCardTemplateSelector
-                x:Key="AlinhamentoCardTemplateSelector"
-                ItemImparTemplate="{StaticResource ItemImparTemplate}"
-                ItemParTemplate="{StaticResource ItemParTemplate}" />
-        </ResourceDictionary>
-    </ContentPage.Resources>
-    <Grid
-        Padding="20"
-        ColumnDefinitions="*"
-        RowDefinitions="*,5*">
-        <VerticalStackLayout>
-
-            <components:AvatarUsuario MensagemTela="Encontre Promoções" TelaComponente="Ofertas" />
-
-            <Border
-                Grid.Row="1"
-                Margin="0,20"
-                BackgroundColor="{StaticResource Gray200}"
-                StrokeShape="RoundRectangle 31">
-                <SearchBar Placeholder="Onde você deseja conhecer?" />
-            </Border>
-        </VerticalStackLayout>
-
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+                <templateSelector:AlinhamentoCardTemplateSelector
+                    x:Key="AlinhamentoCardTemplateSelector"
+                    ItemImparTemplate="{StaticResource ItemImparTemplate}"
+                    ItemParTemplate="{StaticResource ItemParTemplate}" />
+            </ResourceDictionary>
+        </ContentPage.Resources>
         <Grid
-            Grid.Row="1"
+            Padding="20"
             ColumnDefinitions="*"
-            RowDefinitions="*,4*">
+            RowDefinitions="*,5*">
             <VerticalStackLayout>
-                <Label
-                    Margin="0,10,0,20"
-                    Style="{StaticResource LabelTitle}"
-                    Text="Melhores Ofertas" />
-                <Label Style="{StaticResource LabelSmall}" Text="Ordenar Por:" />
-                <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
-                    <HorizontalStackLayout Spacing="10">
-                        <CheckBox />
-                        <Label Text="Preço" VerticalOptions="Center" />
-                    </HorizontalStackLayout>
-                    <HorizontalStackLayout Spacing="10">
-                        <CheckBox />
-                        <Label Text="Popularidade" VerticalOptions="Center" />
-                    </HorizontalStackLayout>
-                    <HorizontalStackLayout Spacing="10">
-                        <CheckBox />
-                        <Label Text="Ativa" VerticalOptions="Center" />
-                    </HorizontalStackLayout>
-                </FlexLayout>
+
+                <components:AvatarUsuario MensagemTela="Encontre Promoções" TelaComponente="Ofertas" />
+
+                <Border
+                    Grid.Row="1"
+                    Margin="0,20"
+                    BackgroundColor="{StaticResource Gray200}"
+                    StrokeShape="RoundRectangle 31">
+                    <SearchBar Placeholder="Onde você deseja conhecer?" />
+                </Border>
             </VerticalStackLayout>
-            <Image
+
+            <Grid
                 Grid.Row="1"
-                HeightRequest="50"
-                HorizontalOptions="EndAndExpand"
-                Source="sale_icon.png"
-                VerticalOptions="StartAndExpand"
-                ZIndex="1" />
-            <CollectionView
-                Grid.Row="1"
-                Margin="-5,10"
-                ItemTemplate="{StaticResource AlinhamentoCardTemplateSelector}"
-                ItemsSource="{Binding Ofertas}"
-                SelectionMode="None">
-                <CollectionView.ItemsLayout>
-                    <GridItemsLayout Orientation="Vertical" Span="2" />
-                </CollectionView.ItemsLayout>
-            </CollectionView>
+                ColumnDefinitions="*"
+                RowDefinitions="*,4*">
+                <VerticalStackLayout>
+                    <Label
+                        Margin="0,10,0,20"
+                        Style="{StaticResource LabelTitle}"
+                        Text="Melhores Ofertas" />
+                    <Label Style="{StaticResource LabelSmall}" Text="Ordenar Por:" />
+                    <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
+                        <HorizontalStackLayout Spacing="10">
+                            <CheckBox />
+                            <Label Text="Preço" VerticalOptions="Center" />
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="10">
+                            <CheckBox />
+                            <Label Text="Popularidade" VerticalOptions="Center" />
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="10">
+                            <CheckBox />
+                            <Label Text="Ativa" VerticalOptions="Center" />
+                        </HorizontalStackLayout>
+                    </FlexLayout>
+                </VerticalStackLayout>
+                <Image
+                    Grid.Row="1"
+                    HeightRequest="50"
+                    HorizontalOptions="EndAndExpand"
+                    Source="sale_icon.png"
+                    VerticalOptions="StartAndExpand"
+                    ZIndex="1" />
+                <CollectionView
+                    Grid.Row="1"
+                    Margin="-5,10"
+                    IsGrouped="True"
+                    ItemTemplate="{StaticResource AlinhamentoCardTemplateSelector}"
+                    ItemsSource="{Binding OfertasPacoteAereo}"
+                    SelectionMode="None">
+                    <CollectionView.Header>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            HorizontalOptions="Start"
+                            Text="Pacotes Aéreos"
+                            TextColor="{StaticResource Primary}"
+                            VerticalOptions="Start" />
+                    </CollectionView.Header>
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Horizontal" Span="1" />
+                    </CollectionView.ItemsLayout>
+                </CollectionView>
+            </Grid>
         </Grid>
-    </Grid>
+    </ScrollView>
 </ContentPage>
