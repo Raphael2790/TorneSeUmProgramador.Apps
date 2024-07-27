@@ -2,5 +2,5 @@
 
 namespace Viagens.TorneSeUmProgramador.Core.Dtos;
 
-public record OfertaDto(string? Imagem, string? Titulo, string? Local,
+public record OfertaDto(int Id, string? Imagem, string? Titulo, string? Local,
     string? Latitude, string? Longitude, string? Preco, string? PrecoAnterior, string Data, string TipoPacote);
